@@ -9,6 +9,10 @@ class Question extends Model
 {
     use HasFactory;
 
+    // protected $fillable = ['title', 'slug', 'body', 'category'];
+
+    protected $guarded = [];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -23,4 +27,14 @@ class Question extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function getPathAttribute()
+    {
+        return asset("api/question/$this->slug");
+    } 
 }
