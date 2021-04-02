@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ReplyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ use App\Http\Controllers\CategoryController;
 
 Route::resource('/question', QuestionController::class);
 Route::resource('/category', CategoryController::class);
+Route::resource('/question/{question}/reply', ReplyController::class);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
