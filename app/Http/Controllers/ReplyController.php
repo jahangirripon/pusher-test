@@ -70,9 +70,10 @@ class ReplyController extends Controller
      * @param  \App\Models\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reply $reply)
+    public function update(Request $request, Question $question, Reply $reply)
     {
-        //
+        $reply->update($request->all());
+        return response('Updated', 201);
     }
 
     /**
