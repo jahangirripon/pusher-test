@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenBlacklistedException;
 
 class Handler extends ExceptionHandler
 {
@@ -34,8 +36,18 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
+        $this->renderable(function (TokenBlackListedException $e, $request) {
+            return response(['error' => 'Token is Blacklisted!' ], 500);
+        });
+
+        $this->renderable(function (JWTException $e, $request) {
+            return response(['error' => 'Token is not provided!' ], 500);
+        });
+
+        
+
         $this->reportable(function (Throwable $e) {
-            //
+
         });
     }
 }
