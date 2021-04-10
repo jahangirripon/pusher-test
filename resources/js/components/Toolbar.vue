@@ -1,11 +1,12 @@
 <template>
   <v-toolbar>
-    <v-toolbar-title>Title</v-toolbar-title>
+    <v-toolbar-title>PusherApp</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn text>Link One</v-btn>
-      <v-btn text>Link Two</v-btn>
-      <v-btn text>Link Three</v-btn>
+      <v-btn text>FORUM</v-btn>
+      <v-btn text>ASK QUESTION</v-btn>
+      <v-btn text>CATEGORY</v-btn>
+      <v-btn text>LOGIN</v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>
