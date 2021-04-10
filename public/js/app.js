@@ -1945,6 +1945,15 @@ __webpack_require__.r(__webpack_exports__);
         password: null
       }
     };
+  },
+  methods: {
+    login: function login() {
+      axios.post('/api/auth/login', this.form).then(function (res) {
+        return console.log(res.data);
+      })["catch"](function (error) {
+        return console.log(error.response.data);
+      });
+    }
   }
 });
 
@@ -19872,7 +19881,14 @@ var render = function() {
     [
       _c(
         "v-form",
-        { ref: "form" },
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.login($event)
+            }
+          }
+        },
         [
           _c("v-text-field", {
             attrs: { label: "E-mail", type: "email", required: "" },
