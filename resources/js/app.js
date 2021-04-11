@@ -7,6 +7,8 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 Vue.use(Vuetify)
 
+import User from './helpers/User'
+window.User = User
 
 import AppHome from './components/AppHome.vue'
 import router from './router/router.js'
