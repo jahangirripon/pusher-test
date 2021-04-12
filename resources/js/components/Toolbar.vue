@@ -9,6 +9,9 @@
       <router-link to='/login'>
         <v-btn text>LOGIN</v-btn>
       </router-link>
+      <router-link to='/signup'>
+        <v-btn text>SIGN UP</v-btn>
+      </router-link>
     </div>
   </v-toolbar>
 </template>

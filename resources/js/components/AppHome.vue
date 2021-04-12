@@ -11,6 +11,7 @@
 import toolbar from './Toolbar'
 import AppFooter from './AppFooter'
 import Login from './Login/Login'
+import Signup from './Login/Signup'
 
 export default {
     components: { toolbar, Login, AppFooter }
