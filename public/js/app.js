@@ -2218,6 +2218,42 @@ var User = /*#__PURE__*/function () {
         console.log(_AppStorage__WEBPACK_IMPORTED_MODULE_1__.default.getUser()); // window.location('/forum')
       }
     }
+  }, {
+    key: "hasToken",
+    value: function hasToken() {
+      var storedToken = _AppStorage__WEBPACK_IMPORTED_MODULE_1__.default.getToken();
+
+      if (storedToken) {
+        return _Token__WEBPACK_IMPORTED_MODULE_0__.default.isValid(storedToken) ? true : false;
+      }
+
+      return false;
+    }
+  }, {
+    key: "loggedIn",
+    value: function loggedIn() {
+      return this.hasToken;
+    }
+  }, {
+    key: "logout",
+    value: function logout() {
+      _AppStorage__WEBPACK_IMPORTED_MODULE_1__.default.clear();
+    }
+  }, {
+    key: "name",
+    value: function name() {
+      if (this.loggedIn()) {
+        return _AppStorage__WEBPACK_IMPORTED_MODULE_1__.default.getUser();
+      }
+    }
+  }, {
+    key: "id",
+    value: function id() {
+      if (this.loggedIn()) {
+        var payload = _Token__WEBPACK_IMPORTED_MODULE_0__.default.payload(_AppStorage__WEBPACK_IMPORTED_MODULE_1__.default.getToken());
+        return payload.sub;
+      }
+    }
   }]);
 
   return User;
