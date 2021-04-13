@@ -10,6 +10,8 @@ Vue.use(Vuetify)
 import User from './helpers/User'
 window.User = User
 
+console.log(User.loggedIn());
+
 import AppHome from './components/AppHome.vue'
 import router from './router/router.js'
 

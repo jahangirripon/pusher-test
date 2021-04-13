@@ -3,14 +3,13 @@
     <v-toolbar-title>PusherApp</v-toolbar-title>
     <v-spacer></v-spacer>
     <div class="hidden-sm-and-down">
-      <v-btn text>FORUM</v-btn>
-      <v-btn text>ASK QUESTION</v-btn>
-      <v-btn text>CATEGORY</v-btn>
-      <router-link to='/login'>
-        <v-btn text>LOGIN</v-btn>
-      </router-link>
-      <router-link to='/signup'>
-        <v-btn text>SIGN UP</v-btn>
+      <router-link
+      v-for="item in items"
+      :key="item.title"
+      :to="item.to"
+      v-if="item.show"
+      >
+        <v-btn text>{{ item.title }}</v-btn>
       </router-link>
     </div>
   </v-toolbar>
@@ -19,7 +18,17 @@
 <script>
 
 export default {
-
+  data() {
+    return {
+      items: [
+        {title: 'Forum', to: '/forum', show: true},
+        {title: 'Ask Question', to: '/ask', show: User.loggedIn()},
+        {title: 'Category', to: '/category', show: User.loggedIn()},
+        {title: 'Login', to: '/login', show: !User.loggedIn()},
+        {title: 'Logout', to: '/logout', show: User.loggedIn()},
+      ]
+    }
+  }
 }
 </script>
 
