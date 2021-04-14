@@ -6,21 +6,19 @@ class User
     {
         axios.post('/api/auth/login', data)
         .then(res => this.responseAfterLogin(res))
-        .catch(error => console.log('hi'))
+        .catch(error => console.log(error.response.data))
     }
 
     responseAfterLogin(res)
     {
-        // console.log('hello')
         const access_token = res.data.access_token
         const username = res.data.user
 
         if(Token.isValid(access_token)) {
             
             AppStorage.store(username, access_token)
-
-            console.log(AppStorage.getUser());
-            // window.location('/forum')
+            // console.log(AppStorage.getUser());
+            window.location = '/forum'
         }
     }
 
@@ -31,18 +29,18 @@ class User
         {
             return Token.isValid(storedToken) ? true : false
         }
-
         return false
     }
 
     loggedIn()
     {
-        return this.hasToken
+        return this.hasToken()
     }
 
     logout()
     {
         AppStorage.clear()
+        window.location= "/forum"
     }
 
     name()

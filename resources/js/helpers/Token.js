@@ -2,6 +2,7 @@ class Token {
 
     isValid(token) {
         const payload = this.payload(token); 
+        console.log(payload);
         if(payload) {
             return payload.iss == "http://pusher.test/api/auth/login" || "http://pusher.test/api/auth/signup" ? true : false
         }
